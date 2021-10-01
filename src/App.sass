@@ -1,0 +1,34 @@
+@import "variables"
+
+.App
+  height: 100%
+
+  & > .wrapper
+    margin: 0
+    padding: 0
+    height: 100%
+    overflow-y: hidden
+    display: flex
+    flex-direction: row
+
+    & > .content
+      width: 100%
+      height: 100%
+      overflow: auto
+
+      & > div
+        padding: 25px
+
+.theme-light
+  background-color: $background-color
+  color: $text-color
+
+.theme-dark
+  background-color: #222223
+  color: #858588
+
+  a, .a
+    color: #0e8cfa
+
+    &:visited
+      color: #ff059d

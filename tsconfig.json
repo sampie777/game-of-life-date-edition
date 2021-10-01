@@ -18,7 +18,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noImplicitThis": false,                /* Raise error on 'this' expressions with an implied 'any' type. */
   },
   "include": [
     "src"

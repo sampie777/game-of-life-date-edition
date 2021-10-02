@@ -1,4 +1,5 @@
 import {Deck} from "../objects/Deck";
+import {GameFile, saveGameFile} from "./gameFile";
 
 export interface GameInterface {
     start: () => void
@@ -35,6 +36,19 @@ class Game {
         }
 
         this._game.start();
+    }
+
+    save() {
+        const file: GameFile = {
+            decks: this.decks(),
+        };
+
+        saveGameFile(file);
+    }
+
+    load(file: GameFile) {
+        this.clear()
+        file.decks.forEach(it => this.addDeck(it))
     }
 }
 

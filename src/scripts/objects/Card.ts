@@ -8,4 +8,11 @@ export class Card {
     constructor(text: string) {
         this.text = text;
     }
+
+    static clone(from: Card): Card {
+        const card = new Card(from.text)
+        card.isPlayed = from.isPlayed
+        card.deck = from.deck
+        return card
+    }
 }

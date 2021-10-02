@@ -44,7 +44,7 @@ export default class PlayScreen extends Component<ComponentProps, ComponentState
     openCard(card: Card) {
         this.setState({
             openedCard: card,
-        })
+        }, () => game.save())
     }
 
     closeCard() {

@@ -55,4 +55,10 @@ export class Deck {
         card.isPlayed = true;
         return card;
     }
+
+    static clone(from: Deck): Deck {
+        const deck = new Deck(from.name);
+        from._cards.forEach(it => deck.add(Card.clone(it)))
+        return deck;
+    }
 }

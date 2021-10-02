@@ -6,6 +6,7 @@ import {GameInterface} from "../../scripts/games/game";
 interface ComponentProps {
     text: string
     game: GameInterface
+    className?: string
     redirect?: View
     params?: any
 }
@@ -31,7 +32,7 @@ export default class MenuButton extends Component<ComponentProps, ComponentState
     }
 
     render() {
-        return <div className={"MenuButton"}
+        return <div className={"MenuButton " + (this.props.className || "")}
                     onClick={this.onClick}>
             {this.props.text}
         </div>;

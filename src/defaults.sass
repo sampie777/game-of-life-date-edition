@@ -1,0 +1,99 @@
+@import "./variables"
+
+*
+  box-sizing: border-box
+  position: relative
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif
+
+body
+  //font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+html, body, #root
+  padding: 0
+  margin: 0
+  height: 100%
+
+code
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace
+
+table
+  border-collapse: collapse
+
+h1, .h1
+  font-size: 2rem
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif
+  line-height: 1.28571429em
+  margin: calc(2rem - .14285714em) 0 1rem
+  font-weight: 700
+  padding: 0
+
+  &:first-child
+    margin-top: 0
+
+.theme-dark
+  input[type="email"], input[type="password"], input[type="search"], input[type="text"], textarea, button
+    background-color: #b38fa5
+    border-radius: 2px
+
+input[type="email"], input[type="password"], input[type="search"], input[type="text"]
+  appearance: auto
+
+[type="checkbox"], [type="radio"]
+  margin: auto 5px
+  vertical-align: middle
+  cursor: pointer
+
+.display-none
+  display: none
+
+a, .a, .theme-dark a, .theme-dark .a
+  display: inline-block
+  border: none
+  background: none
+  padding: 0
+  margin: 0
+  cursor: pointer
+  color: $link-color
+  user-select: inherit
+
+  &:visited
+    color: #de0388
+
+  &:hover
+    text-decoration: underline
+
+  &.a-symbol
+    text-decoration: none
+
+hr
+  border-top: 0
+  border-color: $hr-color
+
+.modal
+  .description
+    min-height: 120px
+
+    .LoadingSplash
+      background-color: white
+
+  .actions
+    .delete
+      background: none
+      border-radius: 8px
+      color: #888
+      border: 1px solid #888
+      float: left
+
+      &:hover
+        background: none
+        color: darkred
+        border-color: #902222
+
+.flex-row
+  display: flex
+  flex-direction: row
+
+button
+  cursor: pointer

@@ -1,0 +1,54 @@
+.ErrorBoundary
+  text-align: center
+
+  & > h1
+    padding: 20vh 0 15px 0
+    font-weight: 100
+
+  .deathFace
+    font-weight: 100
+    font-size: 1em
+    margin-bottom: 65px
+
+  .errorName
+    font-size: 1.4em
+    margin-top: 15px
+    margin-bottom: 20px
+    text-align: left
+
+  .code
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace
+    padding: 10px 0
+    background-color: #444444
+    box-shadow: 0 7px 9px -10px inset #000, 0px -10px 13px -13px inset #151515
+
+    .line
+      font-family: inherit
+      color: #d9d9d9
+      margin: 0
+      padding: 0
+      text-align: left
+
+      &:hover
+        background-color: #555
+
+      .lineIndex
+        user-select: none
+        font-family: inherit
+        color: #936c6c
+        padding: 1px 7px
+        margin-right: 10px
+        display: inline-block
+        width: 50px
+        text-align: right
+
+.AuthorizationError
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  overflow-y: auto
+
+  & > div
+    max-width: 600px
+    margin-bottom: 15%

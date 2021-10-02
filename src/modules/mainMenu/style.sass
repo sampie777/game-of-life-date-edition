@@ -1,0 +1,48 @@
+$primary-color: #ffafe0
+$drie: #ff9fdc
+$secondary-color: #fff7fb
+$tertaire-color: #ff4cb7
+//$primary-color: #ffe8f5
+//$secondary-color: #ff5cbf
+
+.MainMenu
+  background-color: $primary-color
+  color: $secondary-color
+  display: flex
+  flex-direction: column
+  justify-content: stretch
+
+  .header
+    background-color: $secondary-color
+    color: $tertaire-color
+    text-align: center
+    font-size: 2em
+    padding-top: 35px
+    padding-bottom: 30px
+    margin-bottom: 20px
+    font-weight: 100
+    box-shadow: 0 3px 5px $drie
+
+    .icon
+      left: -10px
+
+  .buttons
+    width: 100%
+    max-width: 500px
+    margin: 0 auto
+
+.MenuButton
+  background-color: $secondary-color
+  color: $tertaire-color
+  padding: 60px 30px
+  border-radius: 8px
+  font-size: 1.5em
+  margin: 15px
+  box-shadow: 0 5px 6px -2px $drie
+  cursor: pointer
+  user-select: none
+  text-align: center
+  font-weight: 100
+
+  &:hover, &:active, &:focus, &:target
+    box-shadow: 0 4px 3px 0 $drie

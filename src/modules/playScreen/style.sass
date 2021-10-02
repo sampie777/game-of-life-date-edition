@@ -1,0 +1,151 @@
+.PlayScreen
+  background-color: #67d246
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  .header
+    padding-top: 25px
+    width: 100%
+    max-width: 500px
+    display: flex
+    flex-direction: row
+    justify-content: space-evenly
+
+    button
+      //flex: 1
+      padding: 15px 20px
+      border-radius: 50px
+      border: 1px solid #ddd
+      background-color: #fff
+      font-weight: 100
+
+  .cards
+    width: 100%
+    flex: 1
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-evenly
+    padding: 0 25px
+    margin-bottom: 25px
+
+.DeckComponent
+  background-color: #f2f2f2aa
+  margin: 15px 0
+  height: 52vw
+  min-height: 165px
+  max-height: 285px
+  width: 100%
+  max-width: 500px
+  border-radius: 15px
+  position: relative
+
+  .emptyPlaceholder
+    position: absolute
+    left: 20px
+    top: 20px
+    right: 20px
+    bottom: 20px
+    border-radius: 3px
+    border: 2px dashed #b4ccad
+
+
+.CardComponent
+  background-color: #fff
+  padding: 2%
+  height: 100%
+  width: 100%
+  position: absolute
+  border-radius: 15px
+  box-shadow: 1px 1px 3px #00000044
+  cursor: pointer
+
+  .inner1
+    height: 100%
+    background-color: red
+    border-radius: 10px
+    padding: 10px 10%
+    display: flex
+    justify-content: center
+    align-items: center
+
+  .text
+    color: #fff
+    font-size: 1.4em
+    font-weight: bold
+    text-transform: uppercase
+    letter-spacing: 0.1em
+    text-align: center
+
+
+.CardOpenedComponent
+  width: 100%
+  height: 100%
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: #fffffff8
+  display: flex
+  flex-direction: column
+  align-items: center
+  color: #333
+
+  .container
+    width: 100%
+    max-width: 800px
+    height: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    color: #333
+
+    .title
+      text-align: center
+      font-size: 0.9em
+      letter-spacing: 0.1em
+      font-weight: bold
+      text-transform: uppercase
+      color: #555
+      padding: 30px 30px 0
+
+    .textContainer
+      flex: 1
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      font-size: 2em
+      font-weight: 100
+      line-height: 1.8
+      padding: 30px 30px 0
+      overflow-y: auto
+
+      .text
+        flex: 1
+        display: flex
+        align-items: center
+        justify-content: center
+        text-align: center
+
+    .buttons
+      padding: 0 20px 20px
+      width: 100%
+      max-width: 500px
+
+      .closeButton
+        height: 80px
+        //margin: 0 20px 20px
+        background-color: #ffffff
+        border-radius: 15px
+        border: 1px solid #ccc
+        box-shadow: 0 3px 3px #00000011
+        font-size: 1.4em
+        font-weight: 100
+        color: #333
+        width: 100%
+
+
+

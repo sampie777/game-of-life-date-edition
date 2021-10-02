@@ -45,6 +45,9 @@ export default class MainMenu extends Component<ComponentProps, ComponentState> 
                             game={new CustomGame()}
                             redirect={routes.CreateScreen}/>
             </div>
+            <div className={"information"}>
+                Build: {process.env.REACT_APP_VERSION}
+            </div>
         </div>;
     }
 }

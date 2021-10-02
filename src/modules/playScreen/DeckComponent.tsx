@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Deck} from "../../scripts/objects/Deck";
 import CardComponent from "./CardComponent";
-import {Card} from "../../scripts/objects/Card";
 
 interface ComponentProps {
     deck: Deck

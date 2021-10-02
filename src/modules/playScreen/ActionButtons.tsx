@@ -33,6 +33,11 @@ export default class ActionButtons extends Component<ComponentProps, ComponentSt
                 <Icon name={"undo alternate"} size={"large"}/>
             </button>
 
+            <button onClick={() => App.getInstance().setView(routes.CreateScreen)}
+                    title={"Edit cards"}>
+                <Icon name={"setting"} size={"large"}/>
+            </button>
+
             {game.getGame() === undefined ? undefined :
                 <button onClick={this.props.restartGame}
                         title={"Restart game"}>

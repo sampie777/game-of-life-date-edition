@@ -65,7 +65,7 @@ export class App extends Component<ComponentProps, ComponentState> {
     }
 
     private setDocumentTitle(view: View) {
-        document.title = "jSchedule";
+        document.title = "Game of Life - Date edition";
         if (view.title) {
             document.title = `${view.title} - ${document.title}`;
         }

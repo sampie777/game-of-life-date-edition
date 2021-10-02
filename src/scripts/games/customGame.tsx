@@ -11,6 +11,7 @@ export class CustomGame implements GameInterface {
     start() {
         game.clear();
         game.setGame(this);
+        this.decks.forEach(it => it.shuffle());
         this.decks.forEach(it => game.addDeck(it));
     }
 }

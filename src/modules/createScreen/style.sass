@@ -1,0 +1,95 @@
+@import "./../../components/actionButtons"
+
+.CreateScreen
+  background-color: #46c2d2
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  .container
+    width: 100%
+    max-width: 500px
+    flex: 1
+    display: flex
+    flex-direction: column
+    align-items: stretch
+    justify-content: flex-start
+    padding: 30px 15px
+    margin-bottom: 25px
+    gap: 30px
+
+  .addCard, .addDeck
+    text-align: center
+    padding: 8px
+    margin: 6px auto 0
+    width: 200px
+    border-radius: 8px
+    background-color: #ffffff55
+    box-shadow: 0 2px 2px #00000011
+    cursor: pointer
+
+    .icon
+      color: #00000060
+
+  .addDeck
+    padding: 12px 8px
+
+.DeckForm
+  background-color: #fdc073
+  border-radius: 10px
+  padding: 10px
+
+  .actions
+    display: flex
+    flex-direction: row
+    align-items: stretch
+
+    .spacer
+      flex: 1
+      text-transform: uppercase
+      cursor: pointer
+      padding-left: 10px
+      margin-right: 10px
+
+    .minimize
+      cursor: pointer
+      color: #a27946
+      align-self: flex-start
+
+    .delete
+      cursor: pointer
+      color: #f74c4c
+
+  .deckInfo
+    margin-top: 3px
+    padding: 5px 0
+
+    input
+      text-transform: uppercase
+      background-color: #ffffffaa
+      border: none
+
+      &:active, &:hover, &:target, &:focus
+        background-color: #ffffffdd
+
+  input
+    width: 100%
+    border-radius: 8px
+    padding: 10px 15px
+    background-color: #ffffffcc
+    border: none
+
+    &:active, &:hover, &:target, &:focus
+      background-color: #ffffffdd
+
+
+.CardForm
+  padding: 5px
+  display: flex
+  align-items: center
+
+  .delete
+    left: -5px
+    color: #f74c4c
+    cursor: pointer
+    padding: 5px

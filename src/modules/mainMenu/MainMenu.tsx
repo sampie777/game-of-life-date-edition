@@ -39,6 +39,11 @@ export default class MainMenu extends Component<ComponentProps, ComponentState> 
                 <MenuButton text={"Game of Life"}
                             game={new GameOfLife()}
                             redirect={routes.PlayScreen}/>
+
+                <MenuButton text={"Create a new game"}
+                            className={"createGame"}
+                            game={new CustomGame()}
+                            redirect={routes.CreateScreen}/>
             </div>
         </div>;
     }

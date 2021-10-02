@@ -1,4 +1,5 @@
 import {Card} from "./Card";
+import {shuffleArray} from "../../utils";
 
 export class Deck {
     private _cards: Array<Card> = [];
@@ -18,12 +19,9 @@ export class Deck {
         this._cards.splice(this._cards.indexOf(card), 1);
     }
 
-    shuffle(amount: number = 3) {
+    shuffle() {
         this._cards.forEach(it => it.isPlayed = false);
-
-        for (let i = 0; i < amount; i++) {
-            this._cards = this._cards.sort(() => Math.random() - 0.5);
-        }
+        shuffleArray(this._cards);
     }
 
     allCards() {

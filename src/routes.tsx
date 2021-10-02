@@ -3,6 +3,7 @@ import React from "react";
 
 export const MainMenu = React.lazy(() => import("./modules/mainMenu/MainMenu"));
 export const PlayScreen = React.lazy(() => import("./modules/playScreen/PlayScreen"));
+export const CreateScreen = React.lazy(() => import("./modules/createScreen/CreateScreen"));
 
 export const routes = {
     HomePage: new View({
@@ -15,11 +16,19 @@ export const routes = {
     }),
     PlayScreen: new View({
         url: "/play",
-        icon: "home",
+        icon: "puzzle",
         exactPath: true,
         showInMenu: false,
         needsAuthentication: false,
         component: PlayScreen,
+    }),
+    CreateScreen: new View({
+        url: "/create",
+        icon: "setting",
+        exactPath: true,
+        showInMenu: false,
+        needsAuthentication: false,
+        component: CreateScreen,
     }),
 };
 

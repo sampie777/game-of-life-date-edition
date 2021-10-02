@@ -56,6 +56,10 @@ export class Deck {
         return card;
     }
 
+    putBackOnTop(card: Card) {
+        card.isPlayed = false;
+    }
+
     static clone(from: Deck): Deck {
         const deck = new Deck(from.name);
         from._cards.forEach(it => deck.add(Card.clone(it)))

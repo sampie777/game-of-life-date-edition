@@ -5,7 +5,7 @@ import {Card} from "../../scripts/objects/Card";
 
 interface ComponentProps {
     deck: Deck
-    onOpenCard: (card: Card) => void
+    onOpenCard: (deck: Deck) => void
 }
 
 interface ComponentState {
@@ -22,10 +22,7 @@ export default class DeckComponent extends Component<ComponentProps, ComponentSt
     }
 
     openCard() {
-        const card = this.props.deck.take();
-        if (card == null) return;
-
-        this.props.onOpenCard(card);
+        this.props.onOpenCard(this.props.deck);
     }
 
     render() {

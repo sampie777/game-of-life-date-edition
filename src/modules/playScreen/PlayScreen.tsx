@@ -7,6 +7,7 @@ import CardOpenedComponent from "./CardOpenedComponent";
 import {Card} from "../../scripts/objects/Card";
 import {App} from "../../App";
 import {routes} from "../../routes";
+import ActionButtons from "./ActionButtons";
 
 interface ComponentProps {
 }
@@ -14,6 +15,7 @@ interface ComponentProps {
 interface ComponentState {
     decks: Array<Deck>
     openedCard?: Card
+    lastOpenedCard?: Card
 }
 
 export default class PlayScreen extends Component<ComponentProps, ComponentState> {
@@ -32,6 +34,7 @@ export default class PlayScreen extends Component<ComponentProps, ComponentState
         this.restartGame = this.restartGame.bind(this);
         this.openCard = this.openCard.bind(this);
         this.closeCard = this.closeCard.bind(this);
+        this.undo = this.undo.bind(this);
     }
 
     restartGame() {
@@ -41,9 +44,13 @@ export default class PlayScreen extends Component<ComponentProps, ComponentState
         })
     }
 
-    openCard(card: Card) {
+    openCard(deck: Deck) {
+        const card = deck.take();
+        if (card == null) return;
+
         this.setState({
             openedCard: card,
+            lastOpenedCard: card,
         }, () => game.save())
     }
 
@@ -53,13 +60,19 @@ export default class PlayScreen extends Component<ComponentProps, ComponentState
         })
     }
 
+    undo() {
+        if (this.state.lastOpenedCard === undefined) return;
+
+        this.state.lastOpenedCard.deck?.putBackOnTop(this.state.lastOpenedCard);
+        this.setState({
+            lastOpenedCard: undefined,
+        })
+    }
+
     render() {
         return <div className={"PlayScreen"}>
-            <div className={"header"}>
-                {game.getGame() === undefined ? undefined :
-                    <button onClick={this.restartGame}>Restart</button>}
-                <button onClick={() => App.getInstance().setView(routes.HomePage)}>New game</button>
-            </div>
+            <ActionButtons restartGame={this.restartGame}
+                           undo={this.state.lastOpenedCard === undefined ? undefined : this.undo}/>
 
             <div className={"cards"}>
                 {game.decks().flatMap((it, i) =>

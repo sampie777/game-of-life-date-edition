@@ -47,6 +47,7 @@ export default class CardForm extends Component<ComponentProps, ComponentState> 
             </div>
             <input type={"text"}
                    onChange={this.onHandleChange}
+                   placeholder={"Card description"}
                    value={this.state.text}/>
         </div>;
     }

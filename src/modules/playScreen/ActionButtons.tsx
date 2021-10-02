@@ -35,7 +35,7 @@ export default class ActionButtons extends Component<ComponentProps, ComponentSt
 
             <button onClick={() => App.getInstance().setView(routes.CreateScreen)}
                     title={"Edit cards"}>
-                <Icon name={"setting"} size={"large"}/>
+                <Icon name={"pencil"} size={"large"}/>
             </button>
 
             {game.getGame() === undefined ? undefined :

@@ -39,7 +39,7 @@ export default class DeckForm extends Component<ComponentProps, ComponentState> 
     }
 
     onHandleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        const value = e.target.value;
+        const value = e.target.value.toUpperCase();
         this.props.deck.name = value
         this.setState({
             name: value
@@ -75,6 +75,7 @@ export default class DeckForm extends Component<ComponentProps, ComponentState> 
                 <div className={"deckInfo"}>
                     <input type={"text"}
                            onChange={this.onHandleChange}
+                           placeholder={"Deck name"}
                            value={this.state.name}/>
                 </div>
 

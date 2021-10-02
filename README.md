@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+### Undo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+When playing the game, the player can undo only its last move. That is, when a card is drawn, the player can undo this
+action. The game keeps track of only the previous one card, so if an action is undoed, the game cannot undo another one
+directly. First, a new action must be done.
 
-## Available Scripts
+### Edit cards
 
-In the project directory, you can run:
+Cards can be edited. When saved, the game will restart using the new cards. Also, the game will be locally stored.
 
-### `yarn start`
+### Code new games
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Game of Life class loads it's game configuration from src/assets/games/gameOfLifeDateEdition.json. Edit this .json file
+or add a new one to create a new game. Make sure to create a corresponding class.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Save game / Local storage
 
-### `yarn test`
+Everytime a card is opened or the edited cards are saved, the game will save the available cards offline using a cookie
+called "game". This cookie lives for 30 days, so after 30 days, the game will be lost.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Restart game
 
-### `yarn build`
+During gameplay, the player can decide to directly restart the game. This will shuffle the cards and place them all back
+in the deck. Note that the game won't be saved to the local storage yet.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Undo accidental restart of the game
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+So if a player wants to undo the restart of the game, the player can go back to the main menu and click "Continue
+previous game". This will restore the game to its state before the restart.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Share games
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Games cannot be shared between multiple devices. Not yet that is.

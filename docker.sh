@@ -1,7 +1,7 @@
 #!/bin/bash
-VERSION=$(sed 's/.*"version": "\(.*\)".*/\1/;t;d' ./package.json)
 NAME="sajansen/game-of-life"
 
+VERSION=$(sed 's/.*"version": "\(.*\)".*/\1/;t;d' ./package.json)
 progname=$(basename $0)
 
 function usage {

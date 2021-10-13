@@ -50,18 +50,22 @@ export class App extends Component<ComponentProps, ComponentState> {
         return Object.values(routes).find(it => it.url === path)
     }
 
-    setView(view: View, params?: Object) {
-        this.setUrl(createUrl(view, params));
+    setView(view: View, params?: Object, removeFromHistory = false) {
+        this.setUrl(createUrl(view, params), removeFromHistory);
     }
 
-    setUrl(url?: string) {
+    setUrl(url?: string, removeFromHistory: boolean = false) {
         if (url === undefined) {
             console.error("Cannot set App url to undefined");
             return;
         }
 
-        this.props.history.push(url)
-        this.errorBoundary.current?.reset()
+        if (removeFromHistory) {
+            this.props.history.replace(url);
+        } else {
+            this.props.history.push(url);
+        }
+        this.errorBoundary.current?.reset();
     }
 
     private setDocumentTitle(view: View) {

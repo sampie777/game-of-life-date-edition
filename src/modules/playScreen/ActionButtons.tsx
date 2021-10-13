@@ -20,11 +20,15 @@ export default class ActionButtons extends Component<ComponentProps, ComponentSt
         this.state = {};
     }
 
+    onHomePress() {
+        App.getInstance().setView(routes.HomePage, undefined, true)
+    }
+
     render() {
         return <div className={"ActionButtons"}>
-            <button onClick={() => App.getInstance().setView(routes.HomePage)}
+            <button onClick={this.onHomePress}
                     title={"Main menu"}>
-                <Icon name={"sign-out"} flipped={"horizontally"} size={"large"}/>
+                <Icon name={"home"} flipped={"horizontally"} size={"large"}/>
             </button>
 
             <button onClick={this.props.undo}

@@ -1,6 +1,6 @@
 {
   "name": "game-of-life-date-edition",
-  "version": "0.2.0",
+  "version": "0.3.0-SNAPSHOT",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

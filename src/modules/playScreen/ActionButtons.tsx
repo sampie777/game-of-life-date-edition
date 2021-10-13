@@ -3,6 +3,7 @@ import {App} from "../../App";
 import {routes} from "../../routes";
 import {Icon} from "semantic-ui-react";
 import game from "../../scripts/games/game";
+import ConfirmationPopup, {ConfirmationPopupProps} from "../../components/ConfirmationPopup";
 
 interface ComponentProps {
     restartGame: () => void
@@ -10,6 +11,7 @@ interface ComponentProps {
 }
 
 interface ComponentState {
+    popup?: ConfirmationPopupProps
 }
 
 export default class ActionButtons extends Component<ComponentProps, ComponentState> {
@@ -18,14 +20,44 @@ export default class ActionButtons extends Component<ComponentProps, ComponentSt
         super(props);
 
         this.state = {};
+
+        this.onRestartClick = this.onRestartClick.bind(this);
+        this.closePopup = this.closePopup.bind(this);
     }
 
     onHomePress() {
         App.getInstance().setView(routes.HomePage, undefined, true)
     }
 
+    onRestartClick() {
+        this.setState({
+            popup: {
+                message: "Do you really want to restart the game?",
+                title: "Restart game",
+                onDeny: this.closePopup,
+                denyText: "Nooo",
+                onConfirm: () => {
+                    this.closePopup();
+                    this.props.restartGame();
+                },
+                confirmText: "Yes!",
+                confirmInverted: false,
+            }
+        })
+    }
+
+    closePopup() {
+        this.setState({
+            popup: undefined
+        });
+    }
+
     render() {
         return <div className={"ActionButtons"}>
+            {this.state.popup === undefined ? undefined :
+                <ConfirmationPopup {...this.state.popup} />
+            }
+
             <button onClick={this.onHomePress}
                     title={"Main menu"}>
                 <Icon name={"home"} flipped={"horizontally"} size={"large"}/>
@@ -43,7 +75,7 @@ export default class ActionButtons extends Component<ComponentProps, ComponentSt
             </button>
 
             {game.getGame() === undefined ? undefined :
-                <button onClick={this.props.restartGame}
+                <button onClick={this.onRestartClick}
                         title={"Restart game"}>
                     <Icon name={"sync alternate"} size={"large"}/>
                 </button>}

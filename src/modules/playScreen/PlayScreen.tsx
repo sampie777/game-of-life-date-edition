@@ -68,13 +68,14 @@ export default class PlayScreen extends Component<ComponentProps, ComponentState
 
         if (card.deck?.isNew()) {
             // This means the deck was shuffled, so the last card was the only card left
-            while (card.deck?.take() != null) {}
+            while (card.deck?.take() != null) {
+            }
         }
 
         card.deck?.putBackOnTop(card);
         this.setState({
             lastOpenedCard: undefined,
-        })
+        }, () => game.save());
     }
 
     onShuffleDeckClick(deck: Deck) {

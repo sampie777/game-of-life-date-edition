@@ -43,7 +43,11 @@ class Game {
             decks: this.decks(),
         };
 
-        saveGameFile(file);
+        try {
+            saveGameFile(file);
+        } catch (e) {
+            console.error("Failed to save game file", e);
+        }
     }
 
     load(file: GameFile) {

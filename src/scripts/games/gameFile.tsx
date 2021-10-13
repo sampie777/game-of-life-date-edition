@@ -1,5 +1,6 @@
 import {Deck} from "../objects/Deck";
-import {getCookie, setCookie} from "../cookies";
+
+const localDataKey = "game";
 
 export interface GameFile {
     decks: Array<Deck>
@@ -14,16 +15,25 @@ export function saveGameFile(file: GameFile) {
         deck.allCards().forEach(card => card.deck = undefined))
 
     file.decks = decks;
-    setCookie("game", JSON.stringify(file), 30);
+    const dataToStore = JSON.stringify(file);
+    window.localStorage.setItem(localDataKey, dataToStore);
 }
 
 export function loadGameFile(): GameFile | undefined {
-    const cookie = getCookie("game");
-    if (cookie === null || cookie === undefined || cookie === "") {
+    const storedData = window.localStorage.getItem(localDataKey);
+    if (storedData === null || storedData === undefined || storedData === "") {
         console.log("No game to load")
         return undefined
     }
-    const file: GameFile = JSON.parse(cookie);
+
+    let file: GameFile;
+    try {
+        file = JSON.parse(storedData);
+    } catch (e) {
+        console.error("Failed to parse local storage data", e);
+        window.localStorage.removeItem(localDataKey);
+        return undefined;
+    }
 
     file.decks = file.decks.map(it => Deck.clone(it))
     return file

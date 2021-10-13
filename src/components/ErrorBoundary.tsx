@@ -50,11 +50,14 @@ export default class ErrorBoundary extends Component<ComponentProps, ComponentSt
                 <div className={"errorName"}>{this.state.error && this.state.error.toString()}</div>
 
                 <div className={"code"}>
-                    {this.state.errorInfo.componentStack.trim().split('\n').map((it, i) =>
-                        <div className={"line"}>
-                            <span className={"lineIndex"}>{i + 1}</span>
-                            {it}
-                        </div>)}
+                    {this.state.errorInfo.componentStack
+                        .trim()
+                        .split('\n')
+                        .map((it, i) =>
+                            <div key={i} className={"line"}>
+                                <span className={"lineIndex"}>{i + 1}</span>
+                                {it}
+                            </div>)}
                 </div>
             </details>
         </div>;

@@ -5,6 +5,7 @@ import CardComponent from "./CardComponent";
 interface ComponentProps {
     deck: Deck
     onOpenCard: (deck: Deck) => void
+    onShuffleDeckClick?: (deck: Deck) => void
 }
 
 interface ComponentState {
@@ -27,7 +28,11 @@ export default class DeckComponent extends Component<ComponentProps, ComponentSt
     render() {
         return <div className={"DeckComponent"}>
             {this.props.deck.haveCardsLeft() ? undefined :
-                <div className={"emptyPlaceholder"}/>}
+                <div className={"emptyPlaceholder"}>
+                    <div onClick={() => this.props.onShuffleDeckClick?.(this.props.deck)}>
+                        click to shuffle
+                    </div>
+                </div>}
 
             {this.props.deck.cards().map((card, i) =>
                 <CardComponent key={i}

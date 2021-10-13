@@ -35,12 +35,14 @@ export default class PlayScreen extends Component<ComponentProps, ComponentState
         this.openCard = this.openCard.bind(this);
         this.closeCard = this.closeCard.bind(this);
         this.undo = this.undo.bind(this);
+        this.onShuffleDeckClick = this.onShuffleDeckClick.bind(this);
     }
 
     restartGame() {
         game.restart();
         this.setState({
-            decks: game.decks()
+            decks: game.decks(),
+            lastOpenedCard: undefined,
         })
     }
 
@@ -61,11 +63,25 @@ export default class PlayScreen extends Component<ComponentProps, ComponentState
     }
 
     undo() {
-        if (this.state.lastOpenedCard === undefined) return;
+        const card = this.state.lastOpenedCard;
+        if (card === undefined) return;
 
-        this.state.lastOpenedCard.deck?.putBackOnTop(this.state.lastOpenedCard);
+        if (card.deck?.isNew()) {
+            // This means the deck was shuffled, so the last card was the only card left
+            while (card.deck?.take() != null) {}
+        }
+
+        card.deck?.putBackOnTop(card);
         this.setState({
             lastOpenedCard: undefined,
+        })
+    }
+
+    onShuffleDeckClick(deck: Deck) {
+        deck.shuffle();
+
+        this.setState({
+            decks: game.decks(),
         })
     }
 
@@ -78,7 +94,8 @@ export default class PlayScreen extends Component<ComponentProps, ComponentState
                 {game.decks().flatMap((it, i) =>
                     <DeckComponent key={i + "_" + it.cardsLeft()}
                                    deck={it}
-                                   onOpenCard={this.openCard}/>)}
+                                   onOpenCard={this.openCard}
+                                   onShuffleDeckClick={this.onShuffleDeckClick}/>)}
             </div>
 
             {this.state.openedCard === undefined ? undefined :

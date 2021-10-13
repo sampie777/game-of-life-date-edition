@@ -58,6 +58,10 @@ export class Deck {
         card.isPlayed = false;
     }
 
+    isNew(): boolean {
+        return !this.allCards().some(it => it.isPlayed)
+    }
+
     static clone(from: Deck): Deck {
         const deck = new Deck(from.name);
         from._cards.forEach(it => deck.add(Card.clone(it)))

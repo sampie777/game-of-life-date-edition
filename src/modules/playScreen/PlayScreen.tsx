@@ -70,6 +70,11 @@ export default class PlayScreen extends Component<ComponentProps, ComponentState
             // This means the deck was shuffled, so the last card was the only card left
             while (card.deck?.take() != null) {
             }
+
+            this.setState({
+                decks: game.decks(),
+            });
+            return;
         }
 
         card.deck?.putBackOnTop(card);

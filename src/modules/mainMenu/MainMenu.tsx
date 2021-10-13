@@ -33,7 +33,7 @@ export default class MainMenu extends Component<ComponentProps, ComponentState> 
                 {loadedGameFile === undefined ? undefined :
                     <MenuButton text={"Continue previous game"}
                                 className={"loadGame"}
-                                game={new CustomGame(loadedGameFile.decks)}
+                                game={new CustomGame(loadedGameFile.decks, false)}
                                 redirect={routes.PlayScreen}/>}
 
                 <MenuButton text={"Game of Life"}
